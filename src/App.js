@@ -41,7 +41,7 @@ function App() {
 
       // Make Detections
       const obj = await net.detect(video);
-      console.log(obj);
+      console.table(obj);
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
