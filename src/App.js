@@ -13,11 +13,10 @@ function App() {
   // Main function
   const runCoco = async () => {
     const net = await cocossd.load();
-    console.log("Handpose model loaded.");
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
-    }, 10);
+    }, 500);
   };
 
   const detect = async (net) => {
@@ -56,7 +55,10 @@ function App() {
       <header className="App-header">
         <Webcam
           ref={webcamRef}
-          muted={true} 
+          muted={true}
+          videoConstraints={{
+            facingMode: "forward"
+          }}
           style={{
             position: "absolute",
             marginLeft: "auto",
@@ -65,8 +67,8 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: 640,
-            height: 480,
+            width: "100%",
+            height: "100%",
           }}
         />
 
